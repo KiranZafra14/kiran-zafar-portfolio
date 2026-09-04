@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kiran Zafar — Front-End Developer & Designer</title>
+  <meta name="description"
+    content="Portfolio of Kiran Zafar, Front-End Developer & Designer crafting clean, responsive, and animated digital experiences." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicon-64.png" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
+
+  <!-- Google Fonts: Plus Jakarta Sans (UI) + Sora (headings) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- FontAwesome / Lucide Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Theme Initialization (prevents flash) -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+</head>
+
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-wrapper">
+      <div class="preloader-glow"></div>
+      <div class="preloader-ring-pulse"></div>
+
+      <!-- Animated SVG Loading Ring wrapping the logo edges -->
+      <svg class="preloader-ring-svg" viewBox="0 0 100 100">
+        <circle class="preloader-ring-bg" cx="50" cy="50" r="46" />
+        <circle class="preloader-ring-fill" cx="50" cy="50" r="46" />
+      </svg>
+
+      <!-- Rotating Golden Shimmer Arc around the border -->
+      <div class="preloader-spin-arc"></div>
+
+      <!-- Orbiting Particle Dot on the edge -->
+      <div class="preloader-orbit-ring">
+        <div class="preloader-orbit-dot"></div>
+      </div>
+
+      <!-- Centered Logo -->
+      <div class="preloader-mark">
+        <img src="assets/logo.png" alt="Kiran Zafar logo" />
+      </div>
+    </div>
+
+    <!-- Refined Minimal Loading Status -->
+    <div class="preloader-status">
+      <span class="preloader-text">Loading</span>
+      <span class="preloader-dots"><span>.</span><span>.</span><span>.</span></span>
+    </div>
+  </div>
+
+  <!-- Smooth Liquid Fluid Smoke -->
+  <canvas id="mouse-smoke"></canvas>
+
+  <!-- Ambient Glowing Background Elements -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="header">
+    <div class="container header-container">
+      <!-- Logo Badge -->
+      <a href="#home" class="logo-badge" aria-label="Home Logo">
+        <span class="logo-badge-inner">
+          <img src="assets/logo.png" alt="Kiran Zafar logo" class="logo-badge-img" />
+        </span>
+      </a>
+
+      <!-- Floating Pill Navbar -->
+      <nav class="nav-pill">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <div class="nav-indicator"></div>
+      </nav>
+
+      <!-- Desktop Header Actions (Theme Toggle + Let's Talk Button) -->
+      <div class="header-actions">
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Theme"
+          title="Switch Theme (Light / Dark)">
+          <i class="fa-solid fa-sun theme-icon-indicator"></i>
+        </button>
+
+        <button class="btn-primary talk-btn" id="openContactBtn">
+          Let's Talk <i class="fa-solid fa-arrow-up-right"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Controls (Theme Toggle + Menu Toggle) -->
+      <div class="mobile-controls">
+        <button class="theme-toggle-btn theme-toggle-mobile" id="themeToggleBtnMobile" aria-label="Toggle Theme"
+          title="Switch Theme (Light / Dark)">
+          <i class="fa-solid fa-sun theme-icon-indicator"></i>
+        </button>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu" aria-expanded="false">
+          <i class="fa-solid fa-bars" id="mobileToggleIcon"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <div class="mobile-nav-links">
+        <a href="#home" class="mobile-link"><i class="fa-solid fa-house"></i><span>Home</span></a>
+        <a href="#about" class="mobile-link"><i class="fa-solid fa-user"></i><span>About</span></a>
+        <a href="#skills" class="mobile-link"><i class="fa-solid fa-code"></i><span>Skills</span></a>
+        <a href="#services" class="mobile-link"><i class="fa-solid fa-layer-group"></i><span>Services</span></a>
+        <a href="#projects" class="mobile-link"><i class="fa-solid fa-folder-open"></i><span>Projects</span></a>
+      </div>
+      <button class="btn-primary talk-btn-mobile" id="openContactBtnMobile">
+        Let's Talk <i class="fa-solid fa-arrow-up-right"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME / HERO SECTION — animated 3D wireframe backdrop, minimal intro -->
+    <section id="home" class="hero-3d-section">
+      <canvas id="heroCanvas" class="hero-3d-canvas" aria-hidden="true"></canvas>
+      <div class="hero-3d-grain" aria-hidden="true"></div>
+
+      <div class="hero-3d-content">
+        <h1 class="hero-3d-name animate-fade">Kiran Zafar</h1>
+
+        <div class="hero-role-line animate-fade">
+          <span class="hero-role-prefix">I'm a </span>
+          <span id="typewriterRole" class="hero-role-type"></span><span class="typewriter-cursor"
+            aria-hidden="true"></span>
+        </div>
+
+        <div class="hero-socials hero-home-socials animate-fade">
+          <a href="https://www.linkedin.com/in/kiran-zafar-01b2002b1/" target="_blank" rel="noopener"
+            class="social-icon" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com/KiranZafra14/" target="_blank" rel="noopener" class="social-icon"
+            aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://wa.me/923103400622" target="_blank" rel="noopener" class="social-icon social-whatsapp"
+            aria-label="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+          <a href="tel:+923103400622" class="social-icon social-call" aria-label="Call">
+            <i class="fa-solid fa-phone"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Scroll cue: animated indicator above the bottom bar -->
+      <div class="scroll-cue" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+
+      <!-- Home Feature Bar: located at the bottom of the section after the scroll line -->
+      <div class="home-feature-bar">
+        <div class="poster-feature"><i class="fa-solid fa-code"></i><span>Clean Code</span></div>
+        <div class="poster-feature"><i class="fa-solid fa-pen-nib"></i><span>Creative Design</span></div>
+        <div class="poster-feature"><i class="fa-solid fa-display"></i><span>Responsive Layouts</span></div>
+        <div class="poster-feature"><i class="fa-solid fa-user"></i><span>User Focused</span></div>
+        <div class="poster-feature"><i class="fa-solid fa-gauge-high"></i><span>Performance Driven</span></div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION (merged: intro hero + about me) -->
+    <section id="about" class="section about-hero-section">
+      <div class="container">
+        <div class="section-header text-center animate-scroll">
+          <h2 class="section-title">About Me</h2>
+        </div>
+
+        <!-- Intro block: greeting + photo (previously the standalone Home/Hero) -->
+        <div class="hero-container about-intro">
+          <!-- Intro Text Column -->
+          <div class="hero-content">
+            <div class="hero-greeting animate-fade">
+              <span class="hero-greeting-mark">
+                <img src="assets/logo.png" alt="Kiran Zafar logo" class="hero-mark-img" />
+              </span>
+              <span>I am Kiran Zafar</span>
+            </div>
+
+            <h3 class="hero-title about-intro-title animate-fade">
+              Front-End<br />
+              Developer <span class="hero-title-accent">&</span> Designer
+            </h3>
+
+            <p class="hero-subtitle animate-fade">
+              Blending thoughtful UI design with clean, responsive development to create websites that look great and
+              perform flawlessly.
+            </p>
+
+            <div class="hero-actions animate-fade">
+              <a href="assets/Kiran_Zafar_CV.pdf" download="Kiran_Zafar_CV.pdf" class="btn-secondary download-cv-btn"
+                id="downloadCvBtn">
+                Download CV <i class="fa-solid fa-download"></i>
+              </a>
+            </div>
+
+            <div class="hero-socials animate-fade">
+              <a href="https://www.linkedin.com/in/kiran-zafar-01b2002b1/" target="_blank" rel="noopener"
+                class="social-icon" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a href="https://github.com/KiranZafra14/" target="_blank" rel="noopener" class="social-icon"
+                aria-label="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="https://wa.me/923103400622" target="_blank" rel="noopener" class="social-icon social-whatsapp"
+                aria-label="WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
+              <a href="tel:+923103400622" class="social-icon social-call" aria-label="Call">
+                <i class="fa-solid fa-phone"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Intro Photo Column: live 3D portrait that tracks the cursor -->
+          <div class="hero-image-wrapper animate-fade">
+            <div class="hero-3d-stage" id="hero3DStage">
+              <!-- Rotating orbit rings echo the logo's circular ring + infinity mark -->
+              <div class="orbit-ring ring-outer"></div>
+              <div class="orbit-ring ring-inner"></div>
+              <div class="orbit-dot dot-a"></div>
+              <div class="orbit-dot dot-b"></div>
+
+              <div class="image-card" id="live3DCard">
+                <div class="image-card-sheen"></div>
+                <div class="profile-img-frame">
+                  <img src="assets/profile.JPG" alt="Kiran Zafar - Front-End Developer & Designer"
+                    class="profile-img" />
+                </div>
+
+                <!-- Floating badge chip (3D layered) -->
+                <div class="floating-chip chip-role">
+                  <i class="fa-solid fa-code"></i>
+                  <span>Front-End</span>
+                </div>
+                <div class="floating-chip chip-designer">
+                  <i class="fa-solid fa-pen-nib"></i>
+                  <span>Designer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- About highlights: core skills and discipline statement -->
+        <div class="about-highlights">
+          <div class="about-highlights-grid">
+            <div class="about-highlights-text animate-scroll">
+              <div class="poster-skills">
+                <div class="poster-skill">
+                  <i class="fa-solid fa-code"></i>
+                  <span>HTML<br />CSS<br />JavaScript</span>
+                </div>
+                <div class="poster-skill">
+                  <i class="fa-brands fa-react"></i>
+                  <span>React<br />Tailwind CSS</span>
+                </div>
+                <div class="poster-skill">
+                  <i class="fa-solid fa-bezier-curve"></i>
+                  <span>UI/UX<br />Design</span>
+                </div>
+                <div class="poster-skill">
+                  <i class="fa-solid fa-mobile-screen-button"></i>
+                  <span>Responsive<br />Design</span>
+                </div>
+                <div class="poster-skill">
+                  <i class="fa-solid fa-palette"></i>
+                  <span>Graphic<br />Design</span>
+                </div>
+              </div>
+
+              <div class="poster-quote">
+                <i class="fa-solid fa-quote-left"></i>
+                <p>Discipline today <br />success tomorrow</p>
+                <i class="fa-regular fa-heart"></i>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+        <!-- About Me bio paragraph -->
+        <div class="about-bio-wrapper text-center animate-scroll">
+          <p class="about-bio">
+            I'm a front-end developer and designer passionate about crafting clean, intuitive, and responsive digital
+            experiences. I focus on turning ideas into seamless interfaces by understanding user needs, designing
+            thoughtful UI layouts, and ensuring smooth interactions across devices.
+          </p>
+        </div>
+
+        <div class="approach-wrapper">
+          <h3 class="sub-header-title text-center animate-scroll">My Approach</h3>
+
+          <div class="approach-grid">
+            <div class="card approach-card animate-scroll">
+              <span class="step-num">01</span>
+              <span class="step-desc">Understand users & goals</span>
+            </div>
+
+            <div class="card approach-card animate-scroll">
+              <span class="step-num">02</span>
+              <span class="step-desc">Create clean UI layouts</span>
+            </div>
+
+            <div class="card approach-card animate-scroll">
+              <span class="step-num">03</span>
+              <span class="step-desc">Responsive experiences</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- STATS COUNTER ROW -->
+        <div class="stats-row animate-scroll">
+          <div class="stat-item">
+            <div class="stat-number"><span class="counter" data-target="2">00</span>+</div>
+            <div class="stat-label">Years Of Experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number"><span class="counter" data-target="15">00</span>+</div>
+            <div class="stat-label">Projects Completed</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number"><span class="counter" data-target="5">00</span>+</div>
+            <div class="stat-label">Clients Served</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="section skills-section">
+      <div class="container">
+        <div class="section-header text-center animate-scroll">
+          <h2 class="section-title">Skills</h2>
+          <p class="section-subtitle">Crafting seamless UI/UX and clean code</p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Skills Card 1 -->
+          <div class="card skill-card animate-scroll">
+            <h3 class="card-title">
+              <i class="fa-solid fa-layer-group card-title-icon"></i>
+              <span class="card-title-text">01. Core Skills</span>
+            </h3>
+            <div class="skills-pills">
+              <span class="pill-tag"><i class="fa-solid fa-bezier-curve"></i>UI/UX Design</span>
+              <span class="pill-tag"><i class="fa-solid fa-laptop-code"></i>Frontend Development</span>
+              <span class="pill-tag"><i class="fa-solid fa-mobile-screen-button"></i>Responsive Web Design</span>
+              <span class="pill-tag"><i class="fa-solid fa-cubes"></i>Component-Based Design</span>
+            </div>
+          </div>
+
+          <!-- Skills Card 2 -->
+          <div class="card skill-card animate-scroll">
+            <h3 class="card-title">
+              <i class="fa-solid fa-code card-title-icon"></i>
+              <span class="card-title-text">02. Frontend Tech</span>
+            </h3>
+            <div class="skills-pills">
+              <span class="pill-tag"><i class="fa-brands fa-html5"></i>HTML5</span>
+              <span class="pill-tag"><i class="fa-brands fa-css3-alt"></i>CSS3</span>
+              <span class="pill-tag"><i class="fa-brands fa-js"></i>JavaScript</span>
+              <span class="pill-tag"><i class="fa-brands fa-wordpress"></i>WordPress</span>
+            </div>
+          </div>
+
+          <!-- Skills Card 3 -->
+          <div class="card skill-card animate-scroll">
+            <h3 class="card-title">
+              <i class="fa-solid fa-swatchbook card-title-icon"></i>
+              <span class="card-title-text">03. Design Tools</span>
+            </h3>
+            <div class="skills-pills">
+              <span class="pill-tag"><i class="fa-brands fa-figma"></i>Figma</span>
+              <span class="pill-tag"><i class="fa-solid fa-images"></i>Photoshop</span>
+              <span class="pill-tag"><i class="fa-solid fa-pen-nib"></i>Illustrator</span>
+              <span class="pill-tag"><i class="fa-solid fa-palette"></i>Canva</span>
+            </div>
+          </div>
+
+          <!-- Skills Card 4 -->
+          <div class="card skill-card animate-scroll">
+            <h3 class="card-title">
+              <i class="fa-solid fa-toolbox card-title-icon"></i>
+              <span class="card-title-text">04. Tools & Interaction</span>
+            </h3>
+            <div class="skills-pills">
+              <span class="pill-tag"><i class="fa-brands fa-github"></i>GitHub</span>
+              <span class="pill-tag"><i class="fa-solid fa-cloud-arrow-up"></i>Netlify</span>
+              <span class="pill-tag"><i class="fa-solid fa-wand-magic-sparkles"></i>GSAP</span>
+              <span class="pill-tag"><i class="fa-solid fa-hand-pointer"></i>UI Interactions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="section services-section">
+      <div class="container">
+        <div class="section-header text-center animate-scroll">
+          <h2 class="section-title">Services</h2>
+          <p class="section-subtitle">Designing clean scalable responsive websites</p>
+        </div>
+
+        <div class="services-grid">
+          <!-- Card 1 -->
+          <div class="card service-card animate-scroll">
+            <h3 class="card-title">
+              <i class="fa-solid fa-pen-ruler card-title-icon"></i>
+              <span class="card-title-text">01. UI/UX Website Design</span>
+            </h3>
+            <p class="card-text">
+              Clean, user-focused interfaces designed with clear structure, smooth navigation, responsive layouts, and
+              strong visual hierarchy.
+            </p>
+            <div class="service-pills">
+              <span class="pill-tag"><i class="fa-solid fa-wand-magic-sparkles"></i>Modern UI</span>
+              <span class="pill-tag"><i class="fa-solid fa-mobile-screen-button"></i>Responsive Design</span>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="card service-card animate-scroll">
+            <h3 class="card-title">
+              <i class="fa-solid fa-code card-title-icon"></i>
+              <span class="card-title-text">02. Frontend Development</span>
+            </h3>
+            <p class="card-text">
+              Responsive and interactive websites built with clean HTML, CSS, and JavaScript for consistent performance
+              across devices.
+            </p>
+            <div class="service-pills">
+              <span class="pill-tag"><i class="fa-solid fa-laptop-code"></i>HTML / CSS / JS</span>
+              <span class="pill-tag"><i class="fa-solid fa-hand-pointer"></i>Interactive UI</span>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="card service-card animate-scroll">
+            <h3 class="card-title">
+              <i class="fa-solid fa-palette card-title-icon"></i>
+              <span class="card-title-text">03. Graphic Design</span>
+            </h3>
+            <p class="card-text">
+              Creative visual designs that turn ideas into clean, engaging, and professional graphics for digital and
+              print use.
+            </p>
+            <div class="service-pills">
+              <span class="pill-tag"><i class="fa-solid fa-shapes"></i>Digital Design</span>
+              <span class="pill-tag"><i class="fa-solid fa-image"></i>Visual Graphics</span>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="card service-card animate-scroll">
+            <h3 class="card-title">
+              <i class="fa-solid fa-compass-drafting card-title-icon"></i>
+              <span class="card-title-text">04. Logo & Brand Identity</span>
+            </h3>
+            <p class="card-text">
+              Unique logos and visual identities designed to give brands a distinctive, professional, and consistent
+              look.
+            </p>
+            <div class="service-pills">
+              <span class="pill-tag"><i class="fa-solid fa-pen-nib"></i>Logo Design</span>
+              <span class="pill-tag"><i class="fa-solid fa-certificate"></i>Brand Identity</span>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="card service-card animate-scroll">
+            <h3 class="card-title">
+              <i class="fa-solid fa-arrows-rotate card-title-icon"></i>
+              <span class="card-title-text">05. Website Redesign</span>
+            </h3>
+            <p class="card-text">
+              Transforming outdated websites into modern, responsive, visually engaging experiences with improved
+              usability.
+            </p>
+            <div class="service-pills">
+              <span class="pill-tag"><i class="fa-solid fa-rotate"></i>Modern Redesign</span>
+              <span class="pill-tag"><i class="fa-solid fa-chart-line"></i>UI Improvement</span>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="card service-card animate-scroll">
+            <h3 class="card-title">
+              <i class="fa-solid fa-gauge-high card-title-icon"></i>
+              <span class="card-title-text">06. Responsive & Performance</span>
+            </h3>
+            <p class="card-text">
+              Optimizing websites for mobile, tablet, and desktop with responsive layouts, efficient assets, and smooth
+              interactions.
+            </p>
+            <div class="service-pills">
+              <span class="pill-tag"><i class="fa-solid fa-mobile-screen"></i>Mobile First</span>
+              <span class="pill-tag"><i class="fa-solid fa-bolt"></i>Performance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SHOWCASE SECTION -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <div class="section-header text-center animate-scroll">
+          <h2 class="section-title">Featured Projects</h2>
+          <p class="section-subtitle">Selected portfolio & UI development showcases</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="card project-card animate-scroll">
+            <div class="project-banner">
+              <div class="project-tag"><i class="fa-solid fa-store"></i> E-Commerce</div>
+              <div class="project-img-frame">
+                <img src="assets/project_ecommerce.jpg" alt="E-Commerce Mobile Store" class="project-img"
+                  onerror="this.src='https://via.placeholder.com/1920x1080/1a1a20/ffffff?text=E-Commerce+Store'">
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">E-Commerce Mobile Store</h3>
+              <p class="project-desc">Modern smartphone e-commerce storefront with responsive design, dynamic catalog,
+                cart management, and seamless shopping experience.</p>
+              <ul class="project-highlights">
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Free Shipping on orders
+                    over $50</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>7 Days Return Money
+                    back guarantee</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>1 Year Warranty for all
+                    products</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>100% Secure Payment &
+                    Checkout</span></li>
+              </ul>
+              <div class="project-tools">
+                <span class="pill-tag"><i class="fa-brands fa-html5"></i>HTML5</span>
+                <span class="pill-tag"><i class="fa-brands fa-css3-alt"></i>CSS3</span>
+                <span class="pill-tag"><i class="fa-brands fa-js"></i>JavaScript</span>
+                <span class="pill-tag"><i class="fa-solid fa-cart-shopping"></i>E-Commerce</span>
+                <span class="pill-tag"><i class="fa-solid fa-mobile-screen-button"></i>Responsive</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="card project-card animate-scroll">
+            <div class="project-banner">
+              <div class="project-tag"><i class="fa-solid fa-brain"></i> AI / Deep Learning</div>
+              <div class="project-img-frame">
+                <img src="assets/project_kidney.png" alt="Kidney Stone Detection & Analysis System" class="project-img"
+                  onerror="this.src='https://via.placeholder.com/1920x1080/1a1a20/ffffff?text=Kidney+Stone+Analysis'">
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Kidney Stone Detection & Analysis System</h3>
+              <p class="project-desc">An AI-powered system that uses a hybrid deep learning model (HybridTransUNet-Lite)
+                for accurate kidney stone detection in CT scans and a diffusion model (DDPM) to generate synthetic data.
+              </p>
+              <ul class="project-highlights">
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Hybrid deep learning
+                    model for accurate stone detection</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>DDPM based synthetic CT
+                    image generation</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Mean Dice Score: 0.75 |
+                    Classification Accuracy: 0.94</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Modern and interactive
+                    analysis dashboard</span></li>
+              </ul>
+              <div class="project-tools">
+                <span class="pill-tag"><i class="fa-brands fa-python"></i>Python</span>
+                <span class="pill-tag"><i class="fa-solid fa-fire"></i>PyTorch</span>
+                <span class="pill-tag"><i class="fa-solid fa-dna"></i>MONAI</span>
+                <span class="pill-tag"><i class="fa-solid fa-eye"></i>OpenCV</span>
+                <span class="pill-tag"><i class="fa-solid fa-calculator"></i>NumPy</span>
+                <span class="pill-tag"><i class="fa-solid fa-table"></i>Pandas</span>
+                <span class="pill-tag"><i class="fa-solid fa-chart-line"></i>Matplotlib</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="card project-card animate-scroll">
+            <div class="project-banner">
+              <div class="project-tag"><i class="fa-solid fa-cloud"></i> DevOps & Cloud</div>
+              <div class="project-img-frame">
+                <img src="assets/project_kubeheal.jpg" alt="Kubernetes Self-Healing System" class="project-img"
+                  onerror="this.src='https://via.placeholder.com/1920x1080/1a1a20/ffffff?text=Kubernetes+Dashboard'">
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Kubernetes Self-Healing System</h3>
+              <p class="project-desc">A self-healing application deployment on Kubernetes that automatically detects,
+                recovers, and maintains application health, ensuring high availability and reliability.</p>
+              <ul class="project-highlights">
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Automated failure
+                    detection and recovery</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Self-healing with
+                    liveness & readiness probes</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Auto-scaling based on
+                    CPU & memory usage</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>CI/CD pipeline for
+                    continuous deployment</span></li>
+              </ul>
+              <div class="project-tools">
+                <span class="pill-tag"><i class="fa-solid fa-dharmachakra"></i>Kubernetes</span>
+                <span class="pill-tag"><i class="fa-brands fa-docker"></i>Docker</span>
+                <span class="pill-tag"><i class="fa-solid fa-anchor"></i>Helm</span>
+                <span class="pill-tag"><i class="fa-solid fa-fire-flame-curved"></i>Prometheus</span>
+                <span class="pill-tag"><i class="fa-solid fa-chart-pie"></i>Grafana</span>
+                <span class="pill-tag"><i class="fa-brands fa-golang"></i>Golang</span>
+                <span class="pill-tag"><i class="fa-solid fa-server"></i>NGINX</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="card project-card animate-scroll">
+            <div class="project-banner">
+              <div class="project-tag"><i class="fa-solid fa-server"></i> Infrastructure</div>
+              <div class="project-img-frame">
+                <img src="assets/project_storage.png" alt="Storage Virtualization & Performance Analysis"
+                  class="project-img"
+                  onerror="this.src='https://via.placeholder.com/1920x1080/1a1a20/ffffff?text=Storage+Virtualization'">
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Storage Virtualization & Performance Analysis</h3>
+              <p class="project-desc">A comprehensive project that implements and analyzes storage virtualization using
+                NFS, iSCSI, and Ceph. Evaluates efficiency, scalability, and reliability.</p>
+              <ul class="project-highlights">
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Configured shared
+                    storage using NFS, iSCSI & Ceph</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Deployed VMs on
+                    different storage backends</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Executed I/O benchmarks
+                    using fio benchmarking tool</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Visualized results with
+                    interactive dashboards</span></li>
+              </ul>
+              <div class="project-tools">
+                <span class="pill-tag"><i class="fa-solid fa-cubes"></i>Proxmox VE</span>
+                <span class="pill-tag"><i class="fa-solid fa-hard-drive"></i>Ceph</span>
+                <span class="pill-tag"><i class="fa-solid fa-database"></i>TrueNAS</span>
+                <span class="pill-tag"><i class="fa-brands fa-linux"></i>Linux</span>
+                <span class="pill-tag"><i class="fa-solid fa-network-wired"></i>VMware</span>
+                <span class="pill-tag"><i class="fa-solid fa-chart-line"></i>Grafana</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5 -->
+          <div class="card project-card animate-scroll">
+            <div class="project-banner">
+              <div class="project-tag"><i class="fa-solid fa-cake-candles"></i> Creative Web</div>
+              <div class="project-img-frame">
+                <img src="assets/project_birthday.jpg" alt="Interactive Birthday Website" class="project-img"
+                  onerror="this.src='https://via.placeholder.com/1920x1080/1a1a20/ffffff?text=Birthday+Website'">
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Interactive Birthday Website</h3>
+              <p class="project-desc">An interactive and personalized birthday website created to deliver a memorable
+                experience through animations, storytelling, gallery, and music.</p>
+              <ul class="project-highlights">
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Interactive story
+                    section with smooth animations</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Image gallery with
+                    lightbox preview</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Background music and
+                    engaging transitions</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Personalized and
+                    creative UI/UX design</span></li>
+              </ul>
+              <div class="project-tools">
+                <span class="pill-tag"><i class="fa-brands fa-html5"></i>HTML5</span>
+                <span class="pill-tag"><i class="fa-brands fa-css3-alt"></i>CSS3</span>
+                <span class="pill-tag"><i class="fa-brands fa-js"></i>JavaScript</span>
+                <span class="pill-tag"><i class="fa-solid fa-wand-magic-sparkles"></i>GSAP</span>
+                <span class="pill-tag"><i class="fa-solid fa-sliders"></i>Swiper.js</span>
+                <span class="pill-tag"><i class="fa-solid fa-icons"></i>Font Awesome</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 6 -->
+          <div class="card project-card animate-scroll">
+            <div class="project-banner">
+              <div class="project-tag"><i class="fa-solid fa-icons"></i> Icon Design</div>
+              <div class="project-img-frame">
+                <img src="assets/project_icons.png" alt="Line Icon Set" class="project-img"
+                  onerror="this.src='https://via.placeholder.com/1920x1080/1a1a20/ffffff?text=Line+Icon+Set'">
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Line Icon Set (Personal Growth & Productivity)</h3>
+              <p class="project-desc">A clean and modern line icon set designed for personal growth, productivity, and
+                success. Perfect for websites, mobile apps, and presentations.</p>
+              <ul class="project-highlights">
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>30 Minimal & Modern
+                    Line Icons</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Fully Editable Vector
+                    Icons (2px Stroke)</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Consistent 2px Stroke
+                    Weight & 24px Grid</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Organized formats: SVG,
+                    PNG, EPS, AI</span></li>
+              </ul>
+              <div class="project-tools">
+                <span class="pill-tag"><i class="fa-brands fa-figma"></i>Figma</span>
+                <span class="pill-tag"><i class="fa-solid fa-pen-ruler"></i>Adobe XD</span>
+                <span class="pill-tag"><i class="fa-solid fa-gem"></i>Sketch</span>
+                <span class="pill-tag"><i class="fa-solid fa-image"></i>Photoshop</span>
+                <span class="pill-tag"><i class="fa-solid fa-palette"></i>Canva</span>
+                <span class="pill-tag"><i class="fa-solid fa-bezier-curve"></i>SVG / Vector</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 7 -->
+          <div class="card project-card animate-scroll">
+            <div class="project-banner">
+              <div class="project-tag"><i class="fa-solid fa-laptop-code"></i> Web Design</div>
+              <div class="project-img-frame">
+                <img src="assets/project_portfolio.png" alt="Personal Portfolio Website" class="project-img"
+                  onerror="this.src='https://via.placeholder.com/1920x1080/1a1a20/ffffff?text=Portfolio+Website'">
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Personal Portfolio Website</h3>
+              <p class="project-desc">A modern and responsive personal portfolio website designed to showcase skills,
+                projects, and creative work. Features smooth animations and a clean UI/UX.</p>
+              <ul class="project-highlights">
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Designed clean and
+                    modern UI/UX</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Built fully responsive
+                    layout across all screens</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Added smooth scrolling
+                    and GSAP animations</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Optimized performance
+                    and accessibility</span></li>
+              </ul>
+              <div class="project-tools">
+                <span class="pill-tag"><i class="fa-brands fa-html5"></i>HTML5</span>
+                <span class="pill-tag"><i class="fa-brands fa-css3-alt"></i>CSS3</span>
+                <span class="pill-tag"><i class="fa-brands fa-js"></i>JavaScript</span>
+                <span class="pill-tag"><i class="fa-solid fa-wand-magic-sparkles"></i>GSAP</span>
+                <span class="pill-tag"><i class="fa-solid fa-mobile-screen-button"></i>Responsive</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 8 -->
+          <div class="card project-card animate-scroll">
+            <div class="project-banner">
+              <div class="project-tag"><i class="fa-solid fa-pen-nib"></i> Branding</div>
+              <div class="project-img-frame">
+                <img src="assets/project_logo.jpg" alt="Logo Design" class="project-img"
+                  onerror="this.src='https://via.placeholder.com/1920x1080/1a1a20/ffffff?text=Logo+Design'">
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Logo & Brand Identity Design (KZee)</h3>
+              <p class="project-desc">A creative combination of letterforms and shapes that create a unique identity.
+                The flowing curve adds creativity, while the sharp angles provide strength.</p>
+              <ul class="project-highlights">
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Creative letterform
+                    combination (K + Z)</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Memorable, versatile,
+                    and timeless design</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Flowing curve & sharp
+                    angles balance</span></li>
+                <li class="project-highlight-item"><i class="fa-solid fa-circle-check"></i><span>Brand application kit:
+                    Print, Web, Apparel</span></li>
+              </ul>
+              <div class="project-tools">
+                <span class="pill-tag"><i class="fa-solid fa-pen-nib"></i>Illustrator</span>
+                <span class="pill-tag"><i class="fa-solid fa-image"></i>Photoshop</span>
+                <span class="pill-tag"><i class="fa-brands fa-figma"></i>Figma</span>
+                <span class="pill-tag"><i class="fa-solid fa-certificate"></i>Brand Identity</span>
+                <span class="pill-tag"><i class="fa-solid fa-font"></i>Typography</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-container text-center">
+      <a href="#home" class="footer-mark" aria-label="Back to top">
+        <img src="assets/logo.png" alt="Kiran Zafar logo" />
+      </a>
+      <p>&copy; <span id="currentYear"></span> Kiran Zafar. All rights reserved.</p>
+      <div class="footer-socias">
+        <a href="https://www.linkedin.com/in/kiran-zafar-01b2002b1/" target="_blank" rel="noopener"
+          aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://github.com/KiranZafra14/" target="_blank" rel="noopener" aria-label="GitHub"><i
+            class="fa-brands fa-github"></i></a>
+        <a href="https://wa.me/923103400622" target="_blank" rel="noopener" aria-label="WhatsApp"><i
+            class="fa-brands fa-whatsapp"></i></a>
+        <a href="tel:+923103400622" aria-label="Call"><i class="fa-solid fa-phone"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CONTACT MODAL -->
+  <div class="modal-overlay" id="contactModal">
+    <div class="modal-card">
+      <button class="modal-close" id="closeModalBtn" aria-label="Close Modal">&times;</button>
+      <div class="modal-header">
+        <h2>Let's Work Together</h2>
+        <p>Have a project in mind or want to talk? Drop a message below!</p>
+      </div>
+      <form class="contact-form" id="contactForm">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" placeholder="John Doe" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" id="email" placeholder="john@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" rows="4" placeholder="Tell me about your project..." required></textarea>
+        </div>
+        <button type="submit" class="btn-primary submit-btn">
+          Send Message <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
+      <div class="form-feedback" id="formFeedback">Message sent successfully!</div>
+    </div>
+  </div>
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- WebGL Fluid -->
+  <script src="https://cdn.jsdelivr.net/npm/webgl-fluid@0.4.0"></script>
+
+  <!-- Three.js (Home hero wireframe scene) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Main JavaScript -->
+  <script src="script.js"></script>
+
+</body>
+
+</html>
